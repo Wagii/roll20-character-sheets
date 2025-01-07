@@ -1,0 +1,128 @@
+:root {
+	--fabula-tech-color: #416476;
+	--fabula-tech-accent: #ddeaf2;
+	--fabula-tech-accent-alpha: #ddeaf29d;
+	--button-background: lightgray;
+	--button-background-active: gray;
+}
+
+textarea {
+	width: -webkit-fill-available !important;
+}
+
+label, summary {
+	color: var(--fabula-tech-color)	;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+}
+
+header img {
+	width: 155px;
+}
+
+header div, header section {
+	flex: 1 1 auto;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	gap: 4px;
+}
+
+header section {
+	align-self: flex-end;
+}
+
+header div input, header div label {
+	display: none;
+}
+
+header input[value="1"] ~ label {
+	flex: 1 1 auto;
+	display: flex;
+	margin: 1px;
+	padding: 4px;
+	border: 2px solid var(--fabula-tech-color);
+	border-radius: 5px;
+	background-color: transparent;
+	justify-content: center;
+}
+
+header input:checked ~ label {
+	display: flex;
+	background-color: var(--fabula-tech-accent-alpha);
+}
+
+header input:checked ~ label:hover,
+header input[value="1"] ~ label:hover {
+	border-width: 3px;
+	margin: 0;
+}
+
+header input[value="0"] ~ label {
+	display: none;
+}
+
+header label {
+	cursor: pointer;
+}
+
+main {
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+main input ~ details {
+	display: none;
+}
+
+main input[value="1"] ~ details {
+	display: flex;
+}
+
+main details {
+	flex: 1 1 auto;
+	flex-flow: column nowrap;
+	border: 2px solid var(--fabula-tech-color);
+	border-radius: 5px;
+}
+
+main details summary {
+	padding: 4px;
+	font-weight: bold;
+	font-size: large;
+	cursor: pointer;
+	background-color: var(--fabula-tech-accent);
+}
+
+main details[open]>*:not(summary) {
+	margin: 4px;
+}
+
+main details[open] summary {
+	border-bottom: 2px solid var(--fabula-tech-color);
+	margin-bottom: 4px;
+}
+
+main details summary::before {
+	content: "►";
+	margin-right: 4px;
+	font-size: medium;
+}
+
+main details[open] summary::before {
+	content: "▼";
+}
+
+.grid-layout {
+	display: grid;
+	gap: 4px;
+}
+
+main details section {
+	border: 2px solid;
+	border-image: linear-gradient(to right, var(--fabula-tech-color), transparent 40%) 1;
+	background: transparent;
+}

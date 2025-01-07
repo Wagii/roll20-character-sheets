@@ -1,27 +1,522 @@
 <!DOCTYPE html>
 
-<main>
-	<div class="charsheet">
-		<div class="sheet-header">
-			<input type="hidden" name="attr_character_button" value="1" />
-			<input type="hidden" name="attr_stats_button" value="1" />
-			<input type="hidden" name="attr_rolls_button" value="1" />
-			<input type="hidden" name="attr_affinities_button" value="1" />
-			<input type="hidden" name="attr_equipment_button" value="1" />
-			<input type="hidden" name="attr_armory_button" value="1" />
-			<input type="hidden" name="attr_technosphere_button" value="1" />
-			<input type="hidden" name="attr_spell_button" value="1" />
-			<input type="hidden" name="attr_notes_button" value="1" />
-			<input type="hidden" name="attr_vehicle_button" value="1" />
-			<input type="hidden" name="attr_settings_button" value="1" />
+<div class="charsheet">
+	<header>
+		<!-- <img src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Fabula%20Ultima%20Tech/images/fabula-ultima-transparent-logo.png"> -->
+		<img src="https://raw.githubusercontent.com/Wagii/roll20-character-sheets/new/fabula-ultima-tech/Fabula%20Ultima%20Tech/images/fabula-ultima-transparent-logo.png">
+		<section>
+			<div>
+				<input type="hidden" name="attr_character_button" value="1" />
+				<input type="checkbox" id="character_tab" name="attr_character_tab" checked />
+				<label for="character_tab">character</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_stats_button" value="1" />
+				<input type="checkbox" id="stats_tab" name="attr_stats_tab" checked />
+				<label for="stats_tab">stats</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_rolls_button" value="1" />
+				<input type="checkbox" id="rolls_tab" name="attr_rolls_tab" checked />
+				<label for="rolls_tab">rolls</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_affinities_button" value="1" />
+				<input type="checkbox" id="affinities_tab" name="attr_affinities_tab" checked />
+				<label for="affinities_tab">affinities</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_equipment_button" value="1" />
+				<input type="checkbox" id="equipment_tab" name="attr_equipment_tab" checked />
+				<label for="equipment_tab">equipment</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_armory_button" value="1" />
+				<input type="checkbox" id="armory_tab" name="attr_armory_tab" checked />
+				<label for="armory_tab">armory</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_technosphere_button" value="1" />
+				<input type="checkbox" id="technosphere_tab" name="attr_technosphere_tab" checked />
+				<label for="technosphere_tab">technosphere</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_spell_button" value="1" />
+				<input type="checkbox" id="spell_tab" name="attr_spell_tab" checked />
+				<label for="spell_tab">spell</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_notes_button" value="1" />
+				<input type="checkbox" id="notes_tab" name="attr_notes_tab" checked />
+				<label for="notes_tab">notes</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_vehicle_button" value="1" />
+				<input type="checkbox" id="vehicle_tab" name="attr_vehicle_tab" checked />
+				<label for="vehicle_tab">vehicle</label>
+			</div>
+			<div>
+				<input type="hidden" name="attr_settings_button" value="1" />
+				<input type="checkbox" id="settings_tab" name="attr_settings_tab" checked />
+				<label for="settings_tab">settings</label>
+			</div>
+		</section>
+		<img src="https://raw.githubusercontent.com/Wagii/roll20-character-sheets/new/fabula-ultima-tech/Fabula%20Ultima%20Tech/images/fabula-ultima-transparent-logo.png">
+	</header>
+	<main>
+		<div>
+			<input type="hidden" name="attr_character_show" value="1">
+			<details open>
+				<summary>Character</summary>
+				<section>
+					<span>Traits</span>
+					<div>
+						<div>
+							<article>
+								<label>Name</label>
+								<input type="text" name="attr_character_name" title="Character name" placeholder="Character name" />
+							</article>
+							<article>
+								<label>Identity</label>
+								<input type="text" name="attr_character_identity" title="Character identity" placeholder="Character identity" />
+							</article>
+						</div>
+						<div>
+							<article>
+								<label>Theme</label>
+								<input type="text" name="attr_character_theme" list="chara_theme" title="Character theme" placeholder="Character theme" />
+								<datalist id="chara_theme">
+									<option value="Ambition"></option>
+									<option value="Anger"></option>
+									<option value="Belonging"></option>
+									<option value="Doubt"></option>
+									<option value="Duty"></option>
+									<option value="Guilt"></option>
+									<option value="Hope"></option>
+									<option value="Justice"></option>
+									<option value="Mercy"></option>
+									<option value="Vengeance"></option>
+								</datalist>
+							</article>
+							<article>
+								<label>Origin</label>
+								<input type="text" name="attr_character_origin" title="Character origin" placeholder="Character origin" />
+							</article>
+						</div>
+					</div>
+					<article>
+						<label>XP & Levels</label>
+						<div>
+							<span>Level</span>
+							<input type="hidden" name="attr_character_level" value="5" />
+							<span name="attr_character_level"></span>
+						</div>
+						<div>
+							<span>XP</span>
+							<input type="number" name="attr_character_xp" title="Remaining XP to spend" value="0" />
+							<input type="number" name="attr_total_xp" title="Total XP acquired" value="0" />
+						</div>
+					</article>
+				</section>
+				<section>
+					<label>Quirk</label>
+					<input type="text" name="attr_character_quirk" title="Quirk name" placeholder="Quirk name" />
+					<textarea name="attr_character_quirk_desc" title="Quirk description" placeholder="Quirk description"></textarea>
+				</section>
+				<section>
+					<label>Bonds</label>
+					<!-- TODO: Add fields and checkboxes for bonds -->
+					<div>
+						<article>
+							<input type="text" name="attr_character_bond_1" title="Bond 1" placeholder="Bond 1" />
+						</article>
+						<article>
+							<input type="text" name="attr_character_bond_2" title="Bond 2" placeholder="Bond 2" />
+						</article>
+						<article>
+							<input type="text" name="attr_character_bond_3" title="Bond 3" placeholder="Bond 3" />
+						</article>
+					</div>
+					<div>
+						<article>
+							<input type="text" name="attr_character_bond_4" title="Bond 4" placeholder="Bond 4" />
+						</article>
+						<article>
+							<input type="text" name="attr_character_bond_5" title="Bond 5" placeholder="Bond 5" />
+						</article>
+						<article>
+							<input type="text" name="attr_character_bond_6" title="Bond 6" placeholder="Bond 6" />
+						</article>
+					</div>
+				</section>
+				<section>
+					<article>
+						<label>Fabula</label>
+						<input type="number" name="attr_character_fabula" />
+						<details>
+							<summary>Spending points</summary>
+							<ul>
+								<li>+1 Fabula Point if you have none at the start of the session.</li>
+								<li>+1 Fabula Point when a Villain makes an entrance.</li>
+								<li>+1 Fabula Point when you fumble a check.</li>
+								<li>+2 Fabula Point if you surrender at zero HP.</li>
+								<li>Spend 1 Fabula Point after performing a Check to invoke a trait to reroll one or both dice (not a fumble).</li>
+								<li>Spend 1 Fabula Point after performing a Check to invoke a bond and add its strength to the result (once per check).</li>
+								<li>Spend 1 Fabula Point to alter the story. If you alter an existing element, you need permission from whoever introduced it.</li>
+							</ul>
+						</details>
+					</article>
+				</section>
+			</details>
 		</div>
 
-		<h1>Fabula Ultima Tech</h1>
-	</div>
-</main>
+		<div>
+			<input type="hidden" name="attr_stats_show" value="1">
+			<details open>
+				<summary>Stats</summary>
+				<!-- TODO: Stats, HP/MP/IP -->
+				<article>
+					<span>Stats infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_rolls_show" value="1">
+			<details open>
+				<summary>Rolls</summary>
+				<article>
+					<span>Rolls infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_affinities_show" value="1">
+			<details open>
+				<summary>Affinities</summary>
+				<article>
+					<span>Affinities infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_equipment_show" value="1">
+			<details open>
+				<summary>Equipment</summary>
+				<article>
+					<span>Equipment infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_armory_show" value="1">
+			<details open>
+				<summary>Armory</summary>
+				<article>
+					<span>Armory infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_technosphere_show" value="1">
+			<details open>
+				<summary>Technosphere</summary>
+				<article>
+					<span>Technosphere infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_spell_show" value="1">
+			<details open>
+				<summary>Spell</summary>
+				<article>
+					<span>Spell infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_notes_show" value="1">
+			<details open>
+				<summary>Notes</summary>
+				<article>
+					<span>Notes infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_vehicle_show" value="1">
+			<details open>
+				<summary>Vehicle</summary>
+				<article>
+					<span>Vehicle infos</span>
+				</article>
+			</details>
+		</div>
+
+		<div>
+			<input type="hidden" name="attr_settings_show" value="1">
+			<details open>
+				<summary>Settings</summary>
+				<section>
+					<label>Show section buttons</label>
+					<article class="grid-layout" style="grid-template-columns: 1fr 1fr;">
+						<span>Character</span>
+						<input type="checkbox" name="attr_character_button" value="1" checked />
+						<span>Stats</span>
+						<input type="checkbox" name="attr_stats_button" value="1" checked />
+						<span>Rolls</span>
+						<input type="checkbox" name="attr_rolls_button" value="1" checked />
+						<span>Affinities</span>
+						<input type="checkbox" name="attr_affinities_button" value="1" checked />
+						<span>Equipment</span>
+						<input type="checkbox" name="attr_equipment_button" value="1" checked />
+						<span>Armory</span>
+						<input type="checkbox" name="attr_armory_button" value="1" checked />
+						<span>Technosphere</span>
+						<input type="checkbox" name="attr_technosphere_button" value="1" checked />
+						<span>Spell</span>
+						<input type="checkbox" name="attr_spell_button" value="1" checked />
+						<span>Notes</span>
+						<input type="checkbox" name="attr_notes_button" value="1" checked />
+						<span>Vehicle</span>
+						<input type="checkbox" name="attr_vehicle_button" value="1" checked />
+					</article>
+				</section>
+				<section>
+					<label>HP / MP modifiers</label>
+					<article>
+						<label>HP</label>
+						<div>
+							<span>HP Modifiers</span>
+							<input type="number" name="attr_hp_modifier" title="Amout of HP to add/remove from max" value="0" />
+						</div>
+						<div>
+							<span>Extra HP</span>
+							<input type="number" name="attr_extra_hp" title="Amount of times you have the Extra HP Heroic skill equipped" value="0" />
+						</div>
+					</article>
+					<article>
+						<label>MP</label>
+						<div>
+							<span>MP Modifiers</span>
+							<input type="number" name="attr_mp_modifier" title="Amout of MP to add/remove from max" value="0" />
+						</div>
+						<div>
+							<span>Extra MP</span>
+							<input type="number" name="attr_extra_mp" title="Amount of times you have the Extra MP Heroic skill equipped" value="0" />
+						</div>
+					</article>
+				</section>
+			</details>
+		</div>
+	</main>
+</div>
 
 <!-- Rolltemplates -->
 
 <script type="text/worker">
+
+const tabs = [
+	"character",
+	"stats",
+	"rolls",
+	"affinities",
+	"equipment",
+	"armory",
+	"technosphere",
+	"spell",
+	"notes",
+	"vehicle",
+	"settings"
+];
+
+const tabEvents = tabs.map(tab => `change:${tab}_button change:${tab}_tab`).join(" ");
+on(tabEvents, function(eventInfo) {
+	const tab = eventInfo.sourceAttribute.split("_")[0];
+	const missing_attr = eventInfo.sourceAttribute.includes("_tab") ? `${tab}_button` : `${tab}_tab`;
+	getAttrs([missing_attr], function(values) {
+		var output = {};
+
+		const missing = values[missing_attr];
+		const show = missing != "0" && eventInfo.newValue != "0" ? "1" : "0";
+
+		output[`${tab}_show`] = show;
+
+		setAttrs(output);
+	});
+});
+
+on("change:total_xp", function(eventInfo) {
+	var output = {};
+
+	const new_xp = parseInt(eventInfo.newValue);
+	const new_level = Math.min(Math.floor(new_xp / 10) + 5, 50);
+
+	output["character_level"] = new_level;
+
+	setAttrs(output, {silent: false});
+});
+
+on("change:character_level", function(eventInfo) {
+	const new_level = parseInt(eventInfo.newValue);
+	const attrs_to_get = [
+		"might",
+		"willpower",
+		"class_innate_1_benefit",
+		"class_innate_2_benefit",
+		"class_innate_3_benefit",
+		"hp_modifier",
+		"mp_modifier",
+		"extra_hp",
+		"extra_mp"
+	];
+
+	getAttrs(attrs_to_get, function(values) {
+		var output = {};
+
+		const might = parseInt(values["might"]);
+		const willpower = parseInt(values["willpower"]);
+
+		const hp_modifier = parseInt(values["hp_modifier"]);
+		const mp_modifier = parseInt(values["mp_modifier"]);
+
+		const extra_hp = parseInt(values["extra_hp"]);
+		const extra_mp = parseInt(values["extra_mp"]);
+
+		var extra_hp_total = 0;
+		var extra_mp_total = 0;
+
+		if (new_level < 40) {
+			extra_hp_total = extra_hp * 10;
+			extra_mp_total = extra_mp * 10;
+		} else {
+			extra_hp_total = extra_hp * 20;
+			extra_mp_total = extra_mp * 20;
+		}
+
+		var innate_hp_count = 0;
+		var innate_mp_count = 0;
+
+		if (values["class_innate_1_benefit"].includes("HP")) {
+			innate_hp_count++;
+		} else if (values["class_innate_1_benefit"].includes("MP")) {
+			innate_mp_count++;
+		}
+		if (values["class_innate_2_benefit"].includes("HP")) {
+			innate_hp_count++;
+		} else if (values["class_innate_2_benefit"].includes("MP")) {
+			innate_mp_count++;
+		}
+		if (values["class_innate_3_benefit"].includes("HP")) {
+			innate_hp_count++;
+		} else if (values["class_innate_3_benefit"].includes("MP")) {
+			innate_mp_count++;
+		}
+
+		const max_hp = 5 + new_level + (5 * might) + (innate_hp_count * 5) + hp_modifier + extra_hp_total;
+		const crisis = Math.floor(hp / 2);
+		const max_mp = 5 + new_level + (5 * willpower) + (innate_mp_count * 5) + mp_modifier + extra_mp_total;
+
+		output["max_hp"] = max_hp;
+		output["crisis"] = crisis;
+		output["max_mp"] = max_mp;
+
+		setAttrs(output, {silent: false});
+	});
+});
+
+on("change:might change:hp_modifier change:extra_hp change:class_innate_1_benefit change:class_innate_2_benefit change:class_innate_3_benefit", function(eventInfo) {
+	const attrs_to_get = [
+		"character_level",
+		"might",
+		"hp_modifier",
+		"extra_hp",
+		"class_innate_1_benefit",
+		"class_innate_2_benefit",
+		"class_innate_3_benefit"
+	];
+
+	getAttrs(attrs_to_get, function(values) {
+		var output = {};
+
+		const new_level = parseInt(values["character_level"]);
+		const might = parseInt(values["might"]);
+
+		const hp_modifier = parseInt(values["hp_modifier"]);
+		const extra_hp = parseInt(values["extra_hp"]);
+
+		var extra_hp_total = extra_hp * (new_level < 40 ? 10 : 20);
+
+		var innate_hp_count = 0;
+
+		if (values["class_innate_1_benefit"].includes("HP")) {
+			innate_hp_count++;
+		}
+		if (values["class_innate_2_benefit"].includes("HP")) {
+			innate_hp_count++;
+		}
+		if (values["class_innate_3_benefit"].includes("HP")) {
+			innate_hp_count++;
+		}
+
+		const max_hp = 5 + new_level + (5 * might) + (innate_hp_count * 5) + hp_modifier + extra_hp_total;
+		const crisis = Math.floor(hp / 2);
+
+		output["max_hp"] = max_hp;
+		output["crisis"] = crisis;
+
+		setAttrs(output, {silent: false});
+	});
+});
+
+on("change:willpower change:mp_modifier change:extra_mp change:class_innate_1_benefit change:class_innate_2_benefit change:class_innate_3_benefit", function(eventInfo) {
+	const attrs_to_get = [
+		"character_level",
+		"willpower",
+		"mp_modifier",
+		"extra_mp",
+		"class_innate_1_benefit",
+		"class_innate_2_benefit",
+		"class_innate_3_benefit"
+	];
+
+	getAttrs(attrs_to_get, function(values) {
+		var output = {};
+
+		const new_level = parseInt(values["character_level"]);
+		const willpower = parseInt(values["willpower"]);
+
+		const mp_modifier = parseInt(values["mp_modifier"]);
+		const extra_mp = parseInt(values["extra_mp"]);
+
+		var extra_mp_total = extra_mp * (new_level < 40 ? 10 : 20);
+
+		var innate_mp_count = 0;
+
+		if (values["class_innate_1_benefit"].includes("MP")) {
+			innate_mp_count++;
+		}
+		if (values["class_innate_2_benefit"].includes("MP")) {
+			innate_mp_count++;
+		}
+		if (values["class_innate_3_benefit"].includes("MP")) {
+			innate_mp_count++;
+		}
+
+		const max_mp = 5 + new_level + (5 * willpower) + (innate_mp_count * 5) + mp_modifier + extra_mp_total;
+
+		output["max_mp"] = max_mp;
+
+		setAttrs(output, {silent: false});
+	});
+});
 
 </script>
