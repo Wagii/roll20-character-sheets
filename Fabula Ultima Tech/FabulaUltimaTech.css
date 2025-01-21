@@ -74,11 +74,11 @@ main {
 	flex-flow: row nowrap;
 }
 
-main input ~ details {
+main>div>input ~ details {
 	display: none;
 }
 
-main input[value="1"] ~ details {
+main>div>input[value="1"] ~ details {
 	display: flex;
 }
 
@@ -125,4 +125,20 @@ main details section {
 	border: 2px solid;
 	border-image: linear-gradient(to right, var(--fabula-tech-color), transparent 40%) 1;
 	background: transparent;
+}
+
+main details details {
+	border: 0;
+	background: transparent;
+}
+
+main details details summary,
+main details details[open] summary {
+	background-color: transparent;
+	background-image: linear-gradient(to right, var(--fabula-tech-accent), transparent 80%);
+	border: 0;
+}
+
+main details details ul li::marker {
+	color: transparent;
 }
