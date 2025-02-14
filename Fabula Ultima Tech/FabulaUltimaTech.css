@@ -4,141 +4,103 @@
 	--fabula-tech-accent-alpha: #ddeaf29d;
 	--button-background: lightgray;
 	--button-background-active: gray;
+	--section-title-background: #e2eef5;
+	--section-title-background-fade: linear-gradient(to right, #e2eef5, rgba(226, 238, 245, 0));
 }
 
 textarea {
 	width: -webkit-fill-available !important;
 }
 
-label, summary {
-	color: var(--fabula-tech-color)	;
+input[type="radio"] {
+	display: none;
 }
 
-header {
+input[type="radio"] + label {
+	cursor: pointer;
+	display: inline-block;
+	width: auto;
+	text-align: center;
+	margin: 0;
+	border: 2px solid var(--fabula-tech-accent);
+	border-radius: 8px;
+	padding: 4px 8px;
+	font-size: 1em;
+}
+
+input[type="radio"]:checked + label {
+	border-color: var(--fabula-tech-color);
+	font-size: 1.1em;
+}
+
+input.vehicle ~ label.vehicle {
+	display: none;
+}
+
+input.vehicle[value="on"] ~ label.vehicle {
+	display: inline-block;
+}
+
+main>section {
+	display: none;
+}
+
+input[type="hidden"][value="character"]~section.character,
+input[type="hidden"][value="stats"]~section.stats,
+input[type="hidden"][value="combat"]~section.combat,
+input[type="hidden"][value="inventory"]~section.inventory,
+input[type="hidden"][value="vehicles"]~section.vehicles,
+input[type="hidden"][value="notes"]~section.notes,
+input[type="hidden"][value="options"]~section.options {
 	display: flex;
-	justify-content: space-between;
 }
 
-header img {
-	width: 155px;
-}
-
-header div, header section {
-	flex: 1 1 auto;
+div.tab {
 	display: flex;
 	flex-flow: row wrap;
-	justify-content: center;
+	justify-content: space-evenly;
+	align-content: flex-end;
+	gap: 4px;
+	margin-bottom: 2px;
+}
+div.tab>img { width: 155px; }
+div.tab>label { align-self: flex-end; flex: 1 1 auto; }
+
+section.tab { flex-flow: column wrap; }
+section>h1 {
+	padding-left: 1em;
+	color: var(--fabula-tech-color);
+	background: var(--section-title-background-fade);
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	border-image: linear-gradient(to right, rgba(65, 100, 118, 0.5) 0, rgba(65, 100, 118, 0) 50%) 1;
+}
+
+section.tab article {
+	display: flex;
+	flex-flow: column;
+	border: 2px solid var(--fabula-tech-color);
+	padding: 8px;
+	border-radius: 12px;
+}
+
+section.tab.character article.traits {
+	flex: 1 1 auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+section.tab.character article.traits div {
+	display: flex;
+	flex-flow: row;
 	gap: 4px;
 }
 
-header section {
-	align-self: flex-end;
-}
+section.tab.character article.traits button { flex: 1 1 100%; }
+section.tab.character article.traits div.name { flex: 1 1 33%; }
+section.tab.character article.traits div.identity { flex: 1 1 67%; }
+section.tab.character article.traits div.theme { flex: 1 1 50%; }
+section.tab.character article.traits div.origin { flex: 1 1 50%; }
 
-header div input, header div label {
-	display: none;
-}
-
-header input[value="1"] ~ label {
-	flex: 1 1 auto;
-	display: flex;
-	margin: 1px;
-	padding: 4px;
-	border: 2px solid var(--fabula-tech-color);
-	border-radius: 5px;
-	background-color: transparent;
-	justify-content: center;
-}
-
-header input:checked ~ label {
-	display: flex;
-	background-color: var(--fabula-tech-accent-alpha);
-}
-
-header input:checked ~ label:hover,
-header input[value="1"] ~ label:hover {
-	border-width: 3px;
-	margin: 0;
-}
-
-header input[value="0"] ~ label {
-	display: none;
-}
-
-header label {
-	cursor: pointer;
-}
-
-main {
-	display: flex;
-	flex-flow: row nowrap;
-}
-
-main>div>input ~ details {
-	display: none;
-}
-
-main>div>input[value="1"] ~ details {
-	display: flex;
-}
-
-main details {
-	flex: 1 1 auto;
-	flex-flow: column nowrap;
-	border: 2px solid var(--fabula-tech-color);
-	border-radius: 5px;
-}
-
-main details summary {
-	padding: 4px;
-	font-weight: bold;
-	font-size: large;
-	cursor: pointer;
-	background-color: var(--fabula-tech-accent);
-}
-
-main details[open]>*:not(summary) {
-	margin: 4px;
-}
-
-main details[open] summary {
-	border-bottom: 2px solid var(--fabula-tech-color);
-	margin-bottom: 4px;
-}
-
-main details summary::before {
-	content: "►";
-	margin-right: 4px;
-	font-size: medium;
-}
-
-main details[open] summary::before {
-	content: "▼";
-}
-
-.grid-layout {
-	display: grid;
-	gap: 4px;
-}
-
-main details section {
-	border: 2px solid;
-	border-image: linear-gradient(to right, var(--fabula-tech-color), transparent 40%) 1;
-	background: transparent;
-}
-
-main details details {
-	border: 0;
-	background: transparent;
-}
-
-main details details summary,
-main details details[open] summary {
-	background-color: transparent;
-	background-image: linear-gradient(to right, var(--fabula-tech-accent), transparent 80%);
-	border: 0;
-}
-
-main details details ul li::marker {
-	color: transparent;
-}
+.leftfloat{ float: left; }
+.rightfloat{ float: right; }
